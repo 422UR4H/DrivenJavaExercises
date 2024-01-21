@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-// import java.util.HashMap;
-// import java.util.Map;
 import java.util.Scanner;
 
 public class App {
@@ -8,32 +6,36 @@ public class App {
         Scanner input = new Scanner(System.in);
         ArrayList<Exercise> exercises = new ArrayList<>();
         exercises.add(new Ex01());
-        // Map<String, Exercise> exerciseMap = new HashMap<String, Exercise>();
-        // exerciseMap.put(Ex01.getName(), new Ex01());
-
-        // exerciseMap.put(Ex02.getName(), new Ex02());
-        // exerciseMap.put(Ex03.getName(), new Ex03());
-        // exerciseMap.put(Ex04.getName(), new Ex04());
-        // exerciseMap.put(Ex05.getName(), new Ex05());
+        exercises.add(new Ex02());
 
         System.out.println("Hello, World!");
-        System.out.println("This program runs Java exercises. Choose which one you want to run:");
+        System.out.println("This program runs Java exercises. Choose which one you want to run (ctrl+c to exit):");
 
         try {
-            // for (int i = 0; i < 6; i++) {
+            while (true) {
+                for (int i = 0; i < exercises.size(); i++) {
+                    System.out.println("[" + (i + 1) + "]" + exercises.get(i).getName());
+                }
+                Exercise exercise = getExerciseByInput(input, exercises);
+                exercise.printMessages();
+                exercise.execute(input);
 
-            // }
-            Exercise ex = exercises.get(0);
-            System.out.println(ex.getName());
-            for (int i = 0; i < ex.getMessagesSize(); i++) {
-                System.out.println(ex.getMessage(i));
+                System.out.println("");
             }
-            ex.execute(input);
         } catch (Exception e) {
-            System.out.println(e);
-            System.err.println("Ops! Entrada inválida"); // Não insira vírgulas
+            System.err.println(e);
+            System.out.println("Ops! invalid input");
         }
-
         input.close();
+    }
+
+    private static Exercise getExerciseByInput(Scanner input, ArrayList<Exercise> exercises) {
+        try {
+            int number = input.nextInt();
+            return exercises.get(number - 1);
+        } catch (NumberFormatException | IndexOutOfBoundsException e) {
+            System.out.println("Invalid input number. Set 1, 2, etc.");
+            return getExerciseByInput(input, exercises);
+        }
     }
 }
