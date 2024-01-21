@@ -7,6 +7,7 @@ public class App {
         ArrayList<Exercise> exercises = new ArrayList<>();
         exercises.add(new Ex01());
         exercises.add(new Ex02());
+        exercises.add(new Ex03());
 
         System.out.println("Hello, World!");
         System.out.println("This program runs Java exercises. Choose which one you want to run (ctrl+c to exit):");
