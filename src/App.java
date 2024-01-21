@@ -9,6 +9,7 @@ public class App {
         exercises.add(new Ex02());
         exercises.add(new Ex03());
         exercises.add(new Ex04());
+        exercises.add(new Ex05());
 
         System.out.println("Hello, World!");
         System.out.println("This program runs Java exercises. Choose which one you want to run (ctrl+c to exit):");
