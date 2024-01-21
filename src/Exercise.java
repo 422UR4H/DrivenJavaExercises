@@ -19,6 +19,12 @@ public abstract class Exercise implements IExecutable {
     return this.name;
   }
 
+  public final void printMessages() {
+    messages.forEach(msg -> {
+      System.out.println(msg);
+    });
+  }
+
   public final String getMessage(int i) {
     return messages.get(i);
   }
